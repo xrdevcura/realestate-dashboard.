@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vastgoed Beheerdersdashboard</title>
+</head>
+<body>
+    <h1>Projecten</h1>
+
+    <form action="/project-toevoegen" method="POST">
+        <input type="text" name="naam" placeholder="Projectnaam" required>
+        <input type="text" name="locatie" placeholder="Locatie" required>
+        
+        <select name="grondtype">
+            <option value="eigendomsgrond">Eigendomsgrond</option>
+            <option value="erfpacht">Erfpacht</option>
+            <option value="huurgrond">Huurgrond</option>
+        </select>
+        
+        <select name="pandtype">
+            <option value="commerciële ruimte">Commerciële ruimte</option>
+            <option value="studentenflat">Studentenflat</option>
+            <option value="appartementencomplex">Appartementencomplex</option>
+            <option value="volledig huis">Volledig huis</option>
+        </select>
+
+        <input type="number" step="0.01" name="budget" placeholder="Budget (Nafl)" required>
+        <button type="submit">Toevoegen</button>
+    </form>
+
+    <hr>
+
+    <ul>
+        {% for project in projecten %}
+            <li>
+                {{ project[1] }} ({{ project[2] }} - {{ project[3] }}) – Budget: {{ project[5] }} – Locatie: {{ project[4] }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
